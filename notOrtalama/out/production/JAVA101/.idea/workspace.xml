@@ -34,11 +34,6 @@
     <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/notOrtalama" />
-    </key>
-  </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="notOrtalama.src.Main" />
@@ -75,19 +70,11 @@
       <option name="project" value="LOCAL" />
       <updated>1654216367572</updated>
     </task>
-    <task id="LOCAL-00002" summary="All files updated">
-      <created>1654216893176</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1654216893176</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="All files added" />
-    <MESSAGE value="All files updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="All files updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="All files added" />
   </component>
 </project>
