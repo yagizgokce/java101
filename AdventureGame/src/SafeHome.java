@@ -13,11 +13,8 @@ public class SafeHome extends Location{
         return true;
     }
     public void healPlayer(){
-        String hero = getPlayer().getHeroName();
-        for(Heros h: Heros.heros()){
-            if(h.getHeroName() == hero){
-                getPlayer().setHealth(h.getHealth());
-            }
-        }
+        int health = Characters.getHeroByName(this.getPlayer().getHeroName()).getHealth();
+        this.getPlayer().setHealth(health);
     }
+
 }

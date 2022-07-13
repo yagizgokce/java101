@@ -16,13 +16,11 @@ public class Player {
 
 
     public void selectHero(){
-        Heros[] heroList = Heros.heros();
-        for (Heros temp : heroList){
-            System.out.println(temp.getID() + " Hero: " + temp.getHeroName() + "\t Damage: "+ temp.getDamage() +"\t Health:"+ temp.getHealth()+
-            "\t Money:"+temp.getMoney());
-
+        Characters[] heroList = Characters.heros();
+        for (Characters temp : heroList){
+            temp.printCharInfo();
         }
-        System.out.print("Select Your Hero: ");
+        System.out.print("\nSelect Your Hero: ");
         int heroID = input.nextInt();
         switch (heroID){
             case 1:
@@ -42,13 +40,17 @@ public class Player {
                 selectHero();
         }
     }
-    public void initHero(Heros hero){
+    public void initHero(Characters hero){
         this.setDamage(hero.getDamage());
         this.setHealth(hero.getHealth());
         this.setMoney(hero.getMoney());
-        this.setHeroName(hero.getHeroName());
+        this.setHeroName(hero.getName());
     }
-
+    public void printPlayerInfo(){
+        System.out.println("---- " + this.getName() + " Info ----\n"+
+                "Hero: " + this.getHeroName() + "\t Damage: "+ this.getDamage() +"\t Health:"+ this.getHealth()+
+                "\t Money: "+this.getMoney()+"\t Weapon: "+this.getWeapon().getName()+"\t Armor: "+this.getArmor().getName());
+    }
 
     public int getDamage() {
         return damage + this.getInventory().getWeapon().getDamage();
@@ -96,5 +98,14 @@ public class Player {
 
     public void setInventory(Inventory inventory) {
         this.inventory = inventory;
+    }
+    public  Weapons getWeapon(){
+        return this.getInventory().getWeapon();
+    }
+    public Armors getArmor(){
+       return this.getInventory().getArmors();
+    }
+    public String[] getAwards(){
+        return this.getInventory().getAwards();
     }
 }
