@@ -6,19 +6,14 @@ public class Player {
     private int money;
     private String name;
     private String heroName;
+    private Inventory inventory;
     private Scanner input = new Scanner(System.in);
 
     public Player(String name) {
         this.name = name;
+        this.inventory = new Inventory();
     }
 
-    public String getHeroName() {
-        return heroName;
-    }
-
-    public void setHeroName(String heroName) {
-        this.heroName = heroName;
-    }
 
     public void selectHero(){
         Heros[] heroList = Heros.heros();
@@ -56,7 +51,7 @@ public class Player {
 
 
     public int getDamage() {
-        return damage;
+        return damage + this.getInventory().getWeapon().getDamage();
     }
 
     public void setDamage(int damage) {
@@ -87,5 +82,19 @@ public class Player {
         this.name = name;
     }
 
+    public String getHeroName() {
+        return heroName;
+    }
 
+    public void setHeroName(String heroName) {
+        this.heroName = heroName;
+    }
+
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
 }

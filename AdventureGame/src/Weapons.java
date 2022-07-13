@@ -18,6 +18,14 @@ public class Weapons {
         Weapons[] weaponList = {pistol,sword,rifle};
         return weaponList;
     }
+    public static Weapons getWeaponsByID(int id){
+        for(Weapons w : Weapons.weapons()){
+            if(w.getId() == id){
+                return w ;
+            }
+        }
+        return null;
+    }
     public String getName() {
         return name;
     }

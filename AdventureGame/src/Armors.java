@@ -17,6 +17,14 @@ public class Armors {
         Armors[] armorList = {pistol,sword,rifle};
         return armorList;
     }
+    public static Armors getWeaponsByID(int id){
+        for(Armors a : Armors.armors()){
+            if(a.getId() == id){
+                return a ;
+            }
+        }
+        return null;
+    }
 
     public String getName() {
         return name;

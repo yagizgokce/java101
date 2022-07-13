@@ -7,8 +7,8 @@ public class ToolStore extends Location{
 
     @Override
     public boolean onLocation() {
-        System.out.println("You are at Tool Store");
-        System.out.print("You can buy Weapon-> 1 or Armor-> 2 or exit->3 :");
+        System.out.println("\n#####Tool Store#####");
+        System.out.println("\n1-Weapon \n2-Armor\n3-exit");
         int temp = input.nextInt();
         if(temp == 1 || temp == 2){
             showTools(temp);
@@ -31,7 +31,7 @@ public class ToolStore extends Location{
                     }
                 }
                 else{
-                    buyTool(selectWeapon-1,toolID);
+                    buyWeapon(selectWeapon);
                 }
                 break;
             case 2:
@@ -49,41 +49,39 @@ public class ToolStore extends Location{
                     }
                 }
                 else{
-                    buyTool(selectArmor-1,toolID);
+                    buyArmor(selectArmor);
                 }
                 break;
             default:
                 onLocation();
         }
     }
-    public void buyTool(int id, int tool){
-        switch(tool){
-            case 1:
-                Weapons[] list = Weapons.weapons();
-                if(getPlayer().getMoney() >= list[id].getPrice()){
-                    System.out.println("You bought "+ list[id].getName());
-                    int newMoney = getPlayer().getMoney() - list[id].getPrice();
-                    getPlayer().setMoney(newMoney);
-                    System.out.println("Your remaining money is " + getPlayer().getMoney());
-                }else {
-                    System.out.println("You have not enough money");
-                }
-                onLocation();
-                break;
-            case 2:
-                Armors[] list2 = Armors.armors();
-                if(getPlayer().getMoney() >= list2[id].getPrice()){
-                    System.out.println("You bought "+ list2[id].getName()+" armor");
-                    int newMoney = getPlayer().getMoney() - list2[id].getPrice();
-                    getPlayer().setMoney(newMoney);
-                    System.out.println("Your remaining money is " + getPlayer().getMoney());
-                }else {
-                    System.out.println("You have not enough money");
-                }
-                onLocation();
-                break;
-
+    public void buyWeapon(int id){
+        Weapons weapon = Weapons.getWeaponsByID(id);
+        if(this.getPlayer().getMoney() >= weapon.getPrice()){
+            System.out.println("You bought "+ weapon.getName());
+            int newMoney = this.getPlayer().getMoney() - weapon.getPrice();
+            this.getPlayer().setMoney(newMoney);
+            System.out.println("Your remaining money is " + this.getPlayer().getMoney());
+            this.getPlayer().getInventory().setWeapon(weapon);
+        }else {
+            System.out.println("You have not enough money");
         }
+        onLocation();
 
     }
+    public void buyArmor(int id){
+        Armors armor = Armors.getWeaponsByID(id);
+        if(this.getPlayer().getMoney() >= armor.getPrice()){
+            System.out.println("You bought "+ armor.getName()+" armor");
+            int newMoney = this.getPlayer().getMoney() - armor.getPrice();
+            this.getPlayer().setMoney(newMoney);
+            System.out.println("Your remaining money is " + this.getPlayer().getMoney());
+            this.getPlayer().getInventory().setArmors(armor);
+        }else {
+            System.out.println("You have not enough money");
+        }
+        onLocation();
+    }
+
 }

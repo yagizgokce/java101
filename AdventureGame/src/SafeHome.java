@@ -5,11 +5,11 @@ public class SafeHome extends Location{
 
     @Override
     public boolean onLocation() {
-        System.out.println("You are at Safe House");
+        System.out.println("\n####Safe House####");
         System.out.println("Your health is "+ getPlayer().getHealth());
-        System.out.println("You are healing now");
+        System.out.println("You are healing now....");
         healPlayer();
-        System.out.println("Your health is "+ getPlayer().getHealth());
+        System.out.println("<---- Health: "+ getPlayer().getHealth()+" ---->");
         return true;
     }
     public void healPlayer(){
