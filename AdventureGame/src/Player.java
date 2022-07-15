@@ -108,4 +108,15 @@ public class Player {
     public String[] getAwards(){
         return this.getInventory().getAwards();
     }
+    public void moneyInventory(){
+        if(this.getInventory().isAward("10")){
+            this.setMoney(this.getMoney()+10);
+        }
+        else if(this.getInventory().isAward("5")){
+            this.setMoney(this.getMoney()+5);
+        }
+        else if(this.getInventory().isAward("1")){
+            this.setMoney(this.getMoney()+1);
+        }
+    }
 }

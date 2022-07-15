@@ -7,14 +7,18 @@ public class SafeHome extends Location{
     public boolean onLocation() {
         System.out.println("\n####Safe House####");
         System.out.println("Your health is "+ getPlayer().getHealth());
-        System.out.println("You are healing now....");
         healPlayer();
-        System.out.println("<---- Health: "+ getPlayer().getHealth()+" ---->");
         return true;
     }
     public void healPlayer(){
         int health = Characters.getHeroByName(this.getPlayer().getHeroName()).getHealth();
-        this.getPlayer().setHealth(health);
+        if(this.getPlayer().getHealth() != health){
+            this.getPlayer().setHealth(health);
+            System.out.println("You are healing now....");
+            System.out.println("<---- Health: "+ getPlayer().getHealth()+" ---->");
+        }else{
+            System.out.println("You are so goooood");
+        }
     }
 
 }

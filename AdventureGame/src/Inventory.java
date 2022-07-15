@@ -31,6 +31,7 @@ public class Inventory {
     public void setAwards(String[] awards) {
         this.awards = awards;
     }
+
     public void printAwards(){
         for (String s:this.getAwards()){
             System.out.print(s+" ");
@@ -44,4 +45,24 @@ public class Inventory {
         }
         return false;
     }
+
+    public boolean checkAwards(){
+        if(isAward("Food") && isAward("Firewood") && isAward("Water")){
+            return true;
+        }
+        return false;
+    }
+
+    public void setTool(String name){
+        if(isAward(name)){
+            if(Weapons.getWeaponByName(name) != null){
+                this.setWeapon(Weapons.getWeaponByName(name));
+            }
+            else if(Armors.getArmorByName(name) != null){
+                this.setArmors(Armors.getArmorByName(name));
+            }
+        }
+
+    }
+
 }

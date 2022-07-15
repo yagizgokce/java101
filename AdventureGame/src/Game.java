@@ -10,13 +10,16 @@ public class Game {
         System.out.println("Are you ready " + player.getName());
         player.selectHero();
         Location location = null;
-        while (true){
+        boolean action = true;
+        while (action){
             System.out.println("\n######Locations######");
-            System.out.println("Select Location \n1- Safe House \n2- Tool Store \n3- Cave \n4- Forrest \n5- River \n0- Exit Game");
+            System.out.println("Select Location \n1- Safe House \n2- Tool Store \n3- Cave \n4- Forrest \n5- River \n6- Mine \n0- Exit Game ");
             int selectLoc = input.nextInt();
             switch (selectLoc){
                 case 0:
+                    System.out.println("\nYou Gave Up ");
                     location = null;
+                    action = false;
                     break;
                 case 1:
                     location = new SafeHome(player);
@@ -25,38 +28,42 @@ public class Game {
                     location =  new ToolStore(player);
                     break;
                 case 3:
-                    if(!player.getInventory().isAward("Food")) {
+                    if (player.getInventory().isAward("Food")){
+                        System.out.println("You cannot go Cave anymore");
+                        location = null;
+                    }else{
                         location = new Cave(player);
-                        break;
-                    }else{
-                        System.out.println("\nYou cannot go Cave anymore");
-                        selectLoc = input.nextInt();
                     }
+                    break;
                 case 4:
-                    if(!player.getInventory().isAward("Firewood")) {
+                    if(player.getInventory().isAward("Firewood")){
+                        System.out.println("You cannot go Forrest anymore");
+                        location = null;
+                    }else{
                         location = new Forrest(player);
-                        break;
-                    }else{
-                        System.out.println("\nYou cannot go Forrest anymore");
-                        selectLoc = input.nextInt();
                     }
+                    break;
                 case 5:
-                    if(!player.getInventory().isAward("Water")) {
-                        location = new River(player);
-                        break;
+                    if(player.getInventory().isAward("Water")){
+                        System.out.println("You cannot go River anymore");
+                        location = null;
                     }else{
-                        System.out.println("\nYou cannot go River anymore");
-                        selectLoc = input.nextInt();
+                        location = new River(player);
                     }
+                    break;
+                case 6:
+                    location = new Mine(player,Mine.randomAwardGenarator());
+                    break;
                 default:
                     System.out.println("Please Enter Valid Value");
 
             }
-            if (location == null){
-                System.out.println("\nYou Gave Up ");
+            if(location!= null && location.getName().equals("Safe House") && player.getInventory().checkAwards() ){
+                System.out.println("\nWin");
+                player.printPlayerInfo();
                 break;
             }
-            if(!location.onLocation()){
+            if(location!= null && !location.onLocation()){
                 System.out.println("Game Over");
                 break;
             }

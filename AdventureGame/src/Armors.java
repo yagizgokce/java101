@@ -11,9 +11,9 @@ public class Armors {
         this.id = id;
     }
     public static Armors[] armors(){
-        Armors pistol = new Armors("Soft",1,15,1);
-        Armors sword = new Armors("Medium",3,25,2);
-        Armors rifle = new Armors("Hard",5,40,3);
+        Armors pistol = new Armors("SOFT",1,15,1);
+        Armors sword = new Armors("MEDIUM",3,25,2);
+        Armors rifle = new Armors("HARD",5,40,3);
         Armors[] armorList = {pistol,sword,rifle};
         return armorList;
     }
@@ -21,6 +21,14 @@ public class Armors {
         for(Armors a : Armors.armors()){
             if(a.getId() == id){
                 return a ;
+            }
+        }
+        return null;
+    }
+    public static Armors getArmorByName(String name){
+        for(Armors w : Armors.armors()){
+            if(w.getName().equals(name)){
+                return w ;
             }
         }
         return null;

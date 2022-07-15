@@ -12,15 +12,23 @@ public class Weapons {
     }
 
     public static Weapons[] weapons(){
-        Weapons pistol = new Weapons("Pistol",2,25,1);
-        Weapons sword = new Weapons("Sword",3,35,2);
-        Weapons rifle = new Weapons("Rifle",7,45,3);
+        Weapons pistol = new Weapons("PISTOL",2,25,1);
+        Weapons sword = new Weapons("SWORD",3,35,2);
+        Weapons rifle = new Weapons("RIFLE",7,45,3);
         Weapons[] weaponList = {pistol,sword,rifle};
         return weaponList;
     }
     public static Weapons getWeaponsByID(int id){
         for(Weapons w : Weapons.weapons()){
             if(w.getId() == id){
+                return w ;
+            }
+        }
+        return null;
+    }
+    public static Weapons getWeaponByName(String name){
+        for(Weapons w : Weapons.weapons()){
+            if(w.getName().equals(name)){
                 return w ;
             }
         }

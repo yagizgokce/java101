@@ -1,8 +1,11 @@
+import java.util.Random;
+
 public class Characters {
     private int damage;
     private int health;
     private int money;
     private String name;
+
     private int ID;
 
     public Characters(int damage, int health, int money, String name,int ID) {
@@ -23,7 +26,8 @@ public class Characters {
         Characters zombie = new Characters(3,10,4,"Zombie",1);
         Characters vampire = new Characters(4,14,7,"Vampire",2);
         Characters bear = new Characters(7,20,12,"Bear",3);
-        Characters[] obstacleList = {zombie,vampire,bear};
+        Characters snake = new Characters(randomDamage(6,3),12,0,"Snake",4);
+        Characters[] obstacleList = {zombie,vampire,bear,snake};
         return obstacleList;
     }
     public static Characters getHeroByName(String name){
@@ -86,5 +90,10 @@ public class Characters {
 
     public void setID(int ID) {
         this.ID = ID;
+    }
+
+    public static int  randomDamage(int max,int min){
+        Random r = new Random();
+        return r.nextInt(min,max)+1;
     }
 }
